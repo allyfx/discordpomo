@@ -11,7 +11,6 @@ export const InputLabel = styled.label`
   margin-left: 16px;
   margin-bottom: 8px;
 
-  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   color: ${Colors.white};
   font-size: 16px;
@@ -30,7 +29,6 @@ export const InputElement = styled.input`
   border: none;
   outline: none;
 
-  font-family: 'Roboto', sans-serif;
   font-size: 24px;
   color: ${Colors.white};
 
