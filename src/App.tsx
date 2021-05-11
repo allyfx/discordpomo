@@ -1,7 +1,17 @@
-import { Input } from "./components/Input";
+import { Footer } from "components/Footer";
+import { Login } from "pages/Login";
+import GlobalStyles from "styles/GlobalStyles";
 
 function App() {
-  return <Input label="Nome:" placeholder="Digite o seu nome" />;
+  return (
+    <>
+      <GlobalStyles />
+      <div className="main_container">
+        <Login />
+        <Footer />
+      </div>
+    </>
+  );
 }
 
 export default App;

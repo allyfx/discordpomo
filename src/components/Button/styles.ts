@@ -6,7 +6,6 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  font-family: 'Roboto', sans-serif;
   font-size: 24px;
   font-weight: 500;
   color: ${Colors.white};
