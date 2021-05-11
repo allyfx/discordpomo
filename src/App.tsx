@@ -1,5 +1,7 @@
+import { Input } from "./components/Input";
+
 function App() {
-  return <h1>Hello world</h1>;
+  return <Input label="Nome:" placeholder="Digite o seu nome" />;
 }
 
 export default App;
