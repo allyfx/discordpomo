@@ -1,3 +1,6 @@
+import { ApplicationContext } from "contexts/ApplicationContext";
+import { useContext } from "react";
+
 import {
   UserProfileContainer,
   Avatar,
@@ -5,10 +8,12 @@ import {
 } from "./styles";
 
 export function UserProfile() {
+  const { user } = useContext(ApplicationContext);
+
   return (
     <UserProfileContainer>
-      <Avatar />
-      <UserName />
+      <Avatar src={user.avatar} />
+      <UserName>{user.username}</UserName>
     </UserProfileContainer>
   )
 }
