@@ -6,7 +6,7 @@ export const UserProfileContainer = styled.div`
   align-items: center;
 `;
 
-export const Avatar = styled.image`
+export const Avatar = styled.img`
   width: 80px;
   height: 80px;
 
