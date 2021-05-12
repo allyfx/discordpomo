@@ -10,6 +10,7 @@ export const ButtonContainer = styled.button`
   font-weight: 500;
   color: ${Colors.white};
 
+  border: 0;
   background-color: ${Colors.azoxo};
   border-radius: 16px;
 
