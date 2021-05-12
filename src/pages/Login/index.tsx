@@ -10,6 +10,7 @@ import { api } from "services/api";
 
 export function Login() {
   const { authenticateUser } = useContext(ApplicationContext);
+  
   function handleSubmit() {
     const clientId = process.env.REACT_APP_DISCORD_APPLICATION_ID;
     const redirectUri = process.env.REACT_APP_REDIRECT_URL;
