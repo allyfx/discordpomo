@@ -1,6 +1,8 @@
-import { Footer } from "components/Footer";
 import { ApplicationProvider } from "contexts/ApplicationContext";
-import { Login } from "pages/Login";
+
+import { Routes } from "routes";
+import { Footer } from "components/Footer";
+
 import GlobalStyles from "styles/GlobalStyles";
 
 function App() {
@@ -8,7 +10,7 @@ function App() {
     <ApplicationProvider>
       <GlobalStyles />
       <div className="main_container">
-        <Login />
+        <Routes />
         <Footer />
       </div>
     </ApplicationProvider>
