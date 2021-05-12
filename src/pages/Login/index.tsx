@@ -1,4 +1,5 @@
 import { useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 import { LoginContainer } from "./styles";
 
@@ -10,6 +11,8 @@ import { api } from "services/api";
 
 export function Login() {
   const { authenticateUser } = useContext(ApplicationContext);
+
+  const history = useHistory();
   
   function handleSubmit() {
     const clientId = process.env.REACT_APP_DISCORD_APPLICATION_ID;
@@ -53,6 +56,8 @@ export function Login() {
             avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
             username: user.username
           });
+
+          history.push("/token");
         } catch(err) {
           console.log(err);
         }
@@ -60,12 +65,12 @@ export function Login() {
     }
 
     getData();
-  }, [authenticateUser]);
+  }, [authenticateUser, history]);
 
   return (
     <LoginContainer>
       <img src={discordLogo} alt="Discord logo" />
-      <Button onClick={handleSubmit}>Entrar</Button>
+      <Button onClick={handleSubmit}>Próximo</Button>
     </LoginContainer>
   );
 }
