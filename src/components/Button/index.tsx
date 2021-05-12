@@ -1,14 +1,14 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import { ButtonContainer } from "./styles";
 
-interface IButtonProps {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   loading?: boolean;
 }
 
-export function Button({ children, loading = false }: IButtonProps) {
+export function Button({ children, loading = false, ...rest }: IButtonProps) {
   return (
-    <ButtonContainer>
+    <ButtonContainer {...rest}>
       {loading ? "Carregando..." : children}
     </ButtonContainer>
   );

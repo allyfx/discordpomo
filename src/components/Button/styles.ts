@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Colors } from "utils/colors";
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
