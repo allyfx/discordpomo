@@ -1,4 +1,9 @@
-import { createContext, ReactNode, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useState,
+  useEffect,
+} from "react";
 
 interface IUser {
   avatar?: string;
@@ -25,6 +30,10 @@ export function ApplicationProvider({
   const authenticateUser = (user: IUser) => {
     setUser(user);
   };
+
+  useEffect(() => {
+    Notification.requestPermission();
+  }, []);
 
   return (
     <ApplicationContext.Provider value={{

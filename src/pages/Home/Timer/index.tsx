@@ -18,7 +18,7 @@ interface ITimersProps {
 let countdownTimeout: NodeJS.Timeout;
 
 const timers: ITimersProps = {
-  pomodoroInitialTimer: 10,
+  pomodoroInitialTimer: 25 * 60,
   pauseInitialTimer: 5 * 60,
 }
 
