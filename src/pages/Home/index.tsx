@@ -40,6 +40,7 @@ export function Home() {
     const pauseMessage = messages.pause
       ? messages.pause
       : defaultMessages.pause;
+
     await api.patch("/v9/users/@me/settings", {
       status: "idle",
       custom_status: {
@@ -50,6 +51,10 @@ export function Home() {
         "Authorization": user.token,
       }
     });
+
+    if (Notification.permission === 'granted') {
+      new Notification("Hora de trabalhar! 😢");
+    }
   }
 
   async function handlePomodoro() {
@@ -57,6 +62,7 @@ export function Home() {
     const pomodoroMessage = messages.pomodoro
       ? messages.pomodoro
       : defaultMessages.pomodoro;
+
     await api.patch("/v9/users/@me/settings", {
       status: "online",
       custom_status: {
@@ -67,6 +73,10 @@ export function Home() {
         "Authorization": user.token,
       }
     });
+
+    if (Notification.permission === 'granted') {
+      new Notification("Pausa de 15 minutos! 🤩");
+    }
   }
 
   useEffect(() => {
