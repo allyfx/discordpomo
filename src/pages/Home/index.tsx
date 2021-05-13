@@ -1,4 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+
+import { useHistory } from "react-router-dom";
 
 import { Timer } from "./Timer";
 
@@ -24,6 +26,7 @@ const defaultMessages = {
 }
 
 export function Home() {
+  const history = useHistory();
   const { user } = useContext(ApplicationContext);
 
   const [state, setState] = useState<"pomodoro" | "pause">("pomodoro");
@@ -65,6 +68,11 @@ export function Home() {
       }
     });
   }
+
+  useEffect(() => {
+    if (!user.username && !user.avatar && !user.token)
+      history.push("/");
+  }, [history, user]);
 
   return (
     <HomeContainer>
