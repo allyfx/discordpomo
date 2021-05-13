@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { ApplicationContext } from "contexts/ApplicationContext";
@@ -23,6 +23,11 @@ export function Token() {
 
     history.push("/home");
   }
+
+  useEffect(() => {
+    if (!user.avatar && !user.username)
+      history.push('/');
+  }, [history, user]);
 
   return (
     <TokenContainer>
