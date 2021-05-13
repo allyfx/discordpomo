@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { Timer } from "./Timer";
 
 import { UserProfile } from "components/UserProfile";
-
 import { Input } from "components/Input";
+
+import { api } from "services/api";
+import { ApplicationContext } from "contexts/ApplicationContext";
 
 import {
   HomeContainer,
@@ -20,10 +24,47 @@ const defaultMessages = {
 }
 
 export function Home() {
+  const { user } = useContext(ApplicationContext);
+
+  const [state, setState] = useState<"pomodoro" | "pause">("pomodoro");
   const [messages, setMessages] = useState<IMessages>({
     pause: "",
     pomodoro: ""
   });
+
+  async function handlePause() {
+    setState("pause");
+    const pauseMessage = messages.pause
+      ? messages.pause
+      : defaultMessages.pause;
+    await api.patch("/v9/users/@me/settings", {
+      status: "idle",
+      custom_status: {
+        text: pauseMessage
+      }
+    }, {
+      headers: {
+        "Authorization": user.token,
+      }
+    });
+  }
+
+  async function handlePomodoro() {
+    setState("pomodoro");
+    const pomodoroMessage = messages.pomodoro
+      ? messages.pomodoro
+      : defaultMessages.pomodoro;
+    await api.patch("/v9/users/@me/settings", {
+      status: "online",
+      custom_status: {
+        text: pomodoroMessage
+      }
+    }, {
+      headers: {
+        "Authorization": user.token,
+      }
+    });
+  }
 
   return (
     <HomeContainer>
@@ -31,7 +72,13 @@ export function Home() {
         <UserProfile />
       </header>
       <HomeContent>
-        <section></section>
+        <section>
+          <Timer
+            state={state}
+            handlePause={handlePause}
+            handlePomodoro={handlePomodoro}
+          />
+        </section>
         <section className="section_input_fields">
           <Input
             label="Mensagem para status “Pomodoro”:"

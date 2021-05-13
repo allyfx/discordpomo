@@ -15,7 +15,7 @@ export const ButtonContainer = styled.button`
   border-radius: 16px;
 
   width: 320px;
-  height: 72px;
+  min-height: 72px;
 
   transition: background-color 0.2s;
   cursor: pointer;

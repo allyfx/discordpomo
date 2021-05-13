@@ -21,6 +21,8 @@ export const HomeContent = styled.div`
   }
 
   section.section_input_fields {
+    padding: 26px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
